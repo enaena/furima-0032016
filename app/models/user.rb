@@ -4,8 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
-  validates_format_of :encrypted_password, with: PASSWORD_REGEX, message: 'には英字と数字の両方を含めて設定してください' 
+  VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])[a-z\d]+\z/
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
 
   validates :email, uniqueness: true
 
