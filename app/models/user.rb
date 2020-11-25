@@ -7,8 +7,6 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-z])[a-z\d]+\z/
   validates :password, format: { with: VALID_PASSWORD_REGEX }
 
-  validates :email, uniqueness: true
-
   validates :nickname, presence: true
 
   with_options presence: true, format: { with: /\A[ぁ-んァ-ン一-龥]+\z/, message: '全角文字を使用してください' } do
