@@ -58,7 +58,7 @@ describe User do
       it 'メールアドレスに@を含んでいない場合は登録できない' do
         @user.email = 'testcom'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'ユーザー本名(名字)が空では登録できない' do
         @user.last_name = ''
@@ -73,12 +73,12 @@ describe User do
       it 'ユーザー本名(名字)が全角(漢字・ひらがな・カタカナ)でなければ登録できない' do
         @user.last_name = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include('Last name 全角文字を使用してください')
       end
       it 'ユーザー本名(名前)が全角(漢字・ひらがな・カタカナ)でなければ登録できない' do
         @user.first_name = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name 全角文字を使用してください")
+        expect(@user.errors.full_messages).to include('First name 全角文字を使用してください')
       end
       it 'ユーザー本名のフリガナ(名字)が空では登録できない' do
         @user.last_name_kana = ''
@@ -93,12 +93,12 @@ describe User do
       it 'ユーザー本名のフリガナ(名字)が全角(カタカナ)でなければ登録できない' do
         @user.last_name_kana = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Last name kana 全角(カタカナ)文字を使用してください")
+        expect(@user.errors.full_messages).to include('Last name kana 全角(カタカナ)文字を使用してください')
       end
       it 'ユーザー本名のフリガナ(名前)が全角(カタカナ)でなければ登録できない' do
         @user.first_name_kana = 'aaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("First name kana 全角(カタカナ)文字を使用してください")
+        expect(@user.errors.full_messages).to include('First name kana 全角(カタカナ)文字を使用してください')
       end
       it '生年月日が空では登録できない' do
         @user.birthday = ''

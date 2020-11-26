@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-
   validates :image, presence: true
   validates :name, presence: true
   validates :text, presence: true
@@ -10,9 +9,9 @@ class Item < ApplicationRecord
   validates :day, presence: true
   validates :price, presence: true
 
-  validates_inclusion_of :price, in:300..9999999
+  validates_inclusion_of :price, in: 300..9_999_999
 
-  VALID_PASSWORD_REGIX = /\A[a-z0-9]+\z/i
+  VALID_PASSWORD_REGIX = /\A[a-z0-9]+\z/i.freeze
   validates :price, format: { with: VALID_PASSWORD_REGIX }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
@@ -24,5 +23,4 @@ class Item < ApplicationRecord
 
   belongs_to :user
   has_one_attached :image
-  
 end
