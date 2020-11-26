@@ -70,7 +70,6 @@ describe Item do
       it '販売価格が半角数字でないと出品できない' do
         @item.price = '１０００'
         @item.valid?
-        binding.pry
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
     end
