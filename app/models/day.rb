@@ -1,4 +1,4 @@
-class Genre < ActiveHash::Base
+class Day < ActiveHash::Base
 
   self.data = [
     { id: 1, name: '--' },
@@ -6,8 +6,8 @@ class Genre < ActiveHash::Base
     { id: 3, name: '2〜3日で発送' },
     { id: 4, name: '4〜7日で発送' },
   ]
-  end
-
-  belongs_to_active_hash :item
+  
+  include ActiveHash::Associations
+  has_many :items
   
 end
