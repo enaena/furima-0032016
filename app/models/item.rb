@@ -12,6 +12,9 @@ class Item < ApplicationRecord
 
   validates_inclusion_of :price, in:300..9999999
 
+  VALID_PASSWORD_REGIX = /\A[a-z0-9]+\z/i
+  validates :price, format: { with: VALID_PASSWORD_REGIX }
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
   belongs_to_active_hash :condition
