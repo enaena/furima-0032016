@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
 
+  validates :image, presence: true
   validates :name, presence: true
   validates :text, presence: true
   validates :cotegory_id, presence: true
