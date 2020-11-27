@@ -1,5 +1,4 @@
 class Item < ApplicationRecord
-
   with_options presence: true do
     validates :image
     validates :name
@@ -13,12 +12,12 @@ class Item < ApplicationRecord
     end
     PRICE_REGEX = /\A[0-9]+\z/.freeze
     validates :price,
-    numericality: {
-      only_integer: true,
-      greater_than_or_equal_to: 300,
-      less_than_or_equal_to: 9_999_999
-       },
-       format: { with: PRICE_REGEX, message: '販売価格は半角数字のみ保存可能です' }
+              numericality: {
+                only_integer: true,
+                greater_than_or_equal_to: 300,
+                less_than_or_equal_to: 9_999_999
+              },
+              format: { with: PRICE_REGEX, message: '販売価格は半角数字のみ保存可能です' }
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
