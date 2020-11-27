@@ -4,11 +4,13 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :text
-    validates :category_id, numericality: { other_than: 1 }
-    validates :condition_id, numericality: { other_than: 1 }
-    validates :burden_id, numericality: { other_than: 1 }
-    validates :area_id, numericality: { other_than: 1 }
-    validates :day_id, numericality: { other_than: 1 }
+    with_options numericality: { other_than: 1 } do
+      validates :category_id
+      validates :condition_id
+      validates :burden_id
+      validates :area_id
+      validates :day_id
+    end
     PRICE_REGEX = /\A[0-9]+\z/.freeze
     validates :price,
     numericality: {
