@@ -1,18 +1,23 @@
 class Item < ApplicationRecord
-  validates :image, presence: true
-  validates :name, presence: true
-  validates :text, presence: true
-  validates :category_id, presence: true
-  validates :condition_id, presence: true
-  validates :burden, presence: true
-  validates :area, presence: true
-  validates :day, presence: true
-  validates :price, presence: true
 
-  validates_inclusion_of :price, in: 300..9_999_999
-
-  VALID_PASSWORD_REGIX = /\A[a-z0-9]+\z/i.freeze
-  validates :price, format: { with: VALID_PASSWORD_REGIX }
+  with_options presence: true do
+    validates :image
+    validates :name
+    validates :text
+    validates :category_id, numericality: { other_than: 1 }
+    validates :condition_id, numericality: { other_than: 1 }
+    validates :burden_id, numericality: { other_than: 1 }
+    validates :area_id, numericality: { other_than: 1 }
+    validates :day_id, numericality: { other_than: 1 }
+    PRICE_REGEX = /\A[0-9]+\z/.freeze
+    validates :price,
+    numericality: {
+      only_integer: true,
+      greater_than_or_equal_to: 300,
+      less_than_or_equal_to: 9_999_999
+       },
+       format: { with: PRICE_REGEX, message: '販売価格は半角数字のみ保存可能です' }
+  end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :category
