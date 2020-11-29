@@ -7,8 +7,7 @@ class Form
     validates :area_id
     validates :municipality
     validates :house_number
-    validates :building_name
-    validates :phone_number
+    validates :phone_numberformat: { with: /\A\d{10}$|^\d{11}\z/ }
   end
 
   def save
