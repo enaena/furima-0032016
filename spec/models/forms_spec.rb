@@ -47,7 +47,16 @@ describe Form do
         @form.valid?
         expect(@form.errors.full_messages).to include("Phone number can't be blank")
       end
-
+      it '電話番号にハイフンがあると出品できない' do
+        @form.phone_number = '000-000-000'
+        @form.valid?
+        expect(@form.errors.full_messages).to include("Phone number is invalid")
+      end
+      it '電話番号は11桁以内でないと出品できない' do
+        @form.phone_number = '000000000000'
+        @form.valid?
+        expect(@form.errors.full_messages).to include("Phone number is invalid")
+      end
       it 'tokenが空では登録できないこと' do
         @form.token = nil
         @form.valid?
