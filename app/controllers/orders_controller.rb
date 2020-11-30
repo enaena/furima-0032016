@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create,]
-  before_action :sold_out_item, only: [:index]
-  before_action :move_to_index_sign, only: [:index]
   before_action :move_to_index, only: [:index]
 
   def index
@@ -16,20 +15,6 @@ class OrdersController < ApplicationController
       redirect_to root_path
     else
       render :index
-    end
-  end
-
-  def sold_out_item
-    redirect_to root_path if @item.order.present?
-  end
-
-  def move_to_index_sign
-    redirect_to root_path unless user_signed_in?
-  end
-
-  def move_to_index
-    if current_user.id == @item.user_id
-    redirect_to root_path
     end
   end
 
@@ -51,4 +36,11 @@ class OrdersController < ApplicationController
       currency: 'jpy'                 # 通貨の種類（日本円）
     )
   end
+
+  def move_to_index
+    if current_user.id == @item.user_id && @item.order.present?
+    redirect_to root_path
+    end
+  end
+
 end
