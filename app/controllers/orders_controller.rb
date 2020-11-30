@@ -11,8 +11,8 @@ class OrdersController < ApplicationController
   def create
     @form = Form.new(form_params)
     if @form.valid?
-      @form.save
       pay_item
+      @form.save
       redirect_to root_path
     else
       render :index
