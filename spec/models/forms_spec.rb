@@ -47,6 +47,13 @@ describe Form do
         @form.valid?
         expect(@form.errors.full_messages).to include("Phone number can't be blank")
       end
+
+      it "tokenが空では登録できないこと" do
+        @form.token = nil
+        @form.valid?
+        expect(@form.errors.full_messages).to include("Token can't be blank")
+      end
+
     end
   end
 end
