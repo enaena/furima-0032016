@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :sold_out_item, only: [:index]
+  before_action :move_to_index, only: [:index]
 
   def index
     @form = Form.new
@@ -15,6 +17,19 @@ class OrdersController < ApplicationController
     else
     @item = Item.find(params[:item_id])
     render :index
+    end
+  end
+
+  def sold_out_item
+    @item = Item.find(params[:item_id])
+    if @item.order.present?
+    redirect_to root_path 
+    end
+  end
+
+  def move_to_index
+    unless user_signed_in?
+    redirect_to root_path 
     end
   end
 
