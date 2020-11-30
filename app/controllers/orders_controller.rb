@@ -1,28 +1,25 @@
 class OrdersController < ApplicationController
+  before_action :set_item, only: [:index, :create,]
   before_action :sold_out_item, only: [:index]
   before_action :move_to_index_sign, only: [:index]
   before_action :move_to_index, only: [:index]
 
   def index
     @form = Form.new
-    @item = Item.find(params[:item_id])
   end
 
   def create
     @form = Form.new(form_params)
-    @item = Item.find(params[:item_id])
     if @form.valid?
       @form.save
       pay_item
       redirect_to root_path
     else
-      @item = Item.find(params[:item_id])
       render :index
     end
   end
 
   def sold_out_item
-    @item = Item.find(params[:item_id])
     redirect_to root_path if @item.order.present?
   end
 
@@ -37,6 +34,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 
   def form_params
     params.require(:form).permit(:postal_code, :area_id, :municipality, :house_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
