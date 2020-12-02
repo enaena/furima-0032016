@@ -3,7 +3,7 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :text
-    with_options numericality: { other_than: 1 } do
+    with_options numericality: { other_than: 1, message: 'を選択してください'  } do
       validates :category_id
       validates :condition_id
       validates :burden_id
@@ -17,7 +17,7 @@ class Item < ApplicationRecord
                 greater_than_or_equal_to: 300,
                 less_than_or_equal_to: 9_999_999
               },
-              format: { with: PRICE_REGEX, message: '販売価格は半角数字のみ保存可能です' }
+              format: { with: PRICE_REGEX }
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
