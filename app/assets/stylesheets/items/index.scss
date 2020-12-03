@@ -105,7 +105,7 @@ a {
 
 .reason-list-text {
   font-weight: bold;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 30px;
 }
 
@@ -114,7 +114,7 @@ a {
 }
 
 .reason-list-description {
-  font-size: 18px;
+  font-size: 15px;
   margin-top: 5px;
   text-align: center;
 }
@@ -195,23 +195,23 @@ a {
 }
 
 .feature-lists>.list {
-  width: 33vh;
+  width: 42vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .feature-list-text {
-  width: 50vh;
+  width: 42vh;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 5px;
   text-align: center;
 }
 
 .feature-list-description {
-  width: 50vh;
-  font-size: 18px;
+  width: 42vh;
+  font-size: 13px;
   margin-top: 20px;
   text-align: center;
 }
