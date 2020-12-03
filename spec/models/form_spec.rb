@@ -19,52 +19,52 @@ describe Form do
       it '郵便番号が空では購入できない' do
         @form.postal_code = ''
         @form.valid?
-        expect(@form.errors.full_messages).to include("Postal code can't be blank")
+        expect(@form.errors.full_messages).to include("郵便番号を入力してください")
       end
       it '郵便番号にハイフンがなければ購入できない' do
         @form.postal_code = '0000000'
         @form.valid?
-        expect(@form.errors.full_messages).to include('Postal code is invalid')
+        expect(@form.errors.full_messages).to include('郵便番号はハイフンを入れて入力してください')
       end
       it '都道府県が空では購入できない' do
         @form.area_id = ''
         @form.valid?
-        expect(@form.errors.full_messages).to include("Area can't be blank")
+        expect(@form.errors.full_messages).to include("都道府県を選択してください")
       end
       it '都道府県が1では購入できない' do
         @form.area_id = 1
         @form.valid?
-        expect(@form.errors.full_messages).to include('Area must be other than 1')
+        expect(@form.errors.full_messages).to include("都道府県を選択してください")
       end
       it '市区町村が空では購入できない' do
         @form.municipality = ''
         @form.valid?
-        expect(@form.errors.full_messages).to include("Municipality can't be blank")
+        expect(@form.errors.full_messages).to include("市区町村を入力してください")
       end
       it '番地が空では購入できない' do
         @form.house_number = ''
         @form.valid?
-        expect(@form.errors.full_messages).to include("House number can't be blank")
+        expect(@form.errors.full_messages).to include("番地を入力してください")
       end
       it '電話番号が空では購入できない' do
         @form.phone_number = ''
         @form.valid?
-        expect(@form.errors.full_messages).to include("Phone number can't be blank")
+        expect(@form.errors.full_messages).to include("電話番号を入力してください")
       end
       it '電話番号にハイフンがあると購入できない' do
         @form.phone_number = '000-000-000'
         @form.valid?
-        expect(@form.errors.full_messages).to include("Phone number is invalid")
+        expect(@form.errors.full_messages).to include("電話番号は10桁または11桁でハイフンなしで入力してください")
       end
       it '電話番号は11桁以内でないと購入できない' do
         @form.phone_number = '000000000000'
         @form.valid?
-        expect(@form.errors.full_messages).to include("Phone number is invalid")
+        expect(@form.errors.full_messages).to include("電話番号は10桁または11桁でハイフンなしで入力してください")
       end
       it 'tokenが空では購入できない' do
         @form.token = nil
         @form.valid?
-        expect(@form.errors.full_messages).to include("Token can't be blank")
+        expect(@form.errors.full_messages).to include("クレジットカード情報を入力してください")
       end
     end
   end

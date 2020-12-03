@@ -78,7 +78,7 @@ a {
 }
 
 .reason-lists>.list {
-  width: 33vh;
+  width: 42vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -105,8 +105,8 @@ a {
 
 .reason-list-text {
   font-weight: bold;
-  font-size: 24px;
-  line-height: 50px;
+  font-size: 20px;
+  line-height: 30px;
 }
 
 .reason-list-blue-text {
@@ -114,8 +114,9 @@ a {
 }
 
 .reason-list-description {
-  font-size: 18px;
-  margin-top: 20px;
+  font-size: 15px;
+  margin-top: 5px;
+  text-align: center;
 }
 
 /* //FURIMAが選ばれる3つの理由部分 */
@@ -194,21 +195,25 @@ a {
 }
 
 .feature-lists>.list {
-  width: 33vh;
+  width: 42vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .feature-list-text {
+  width: 42vh;
   font-weight: bold;
-  font-size: 22px;
-  line-height: 50px;
+  font-size: 20px;
+  line-height: 5px;
+  text-align: center;
 }
 
 .feature-list-description {
-  font-size: 18px;
+  width: 42vh;
+  font-size: 13px;
   margin-top: 20px;
+  text-align: center;
 }
 
 /* //FURIMAの特徴 */

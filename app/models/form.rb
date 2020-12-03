@@ -4,11 +4,11 @@ class Form
   include ActiveModel::Model
 
   with_options presence: true do
-    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ }
-    validates :area_id, numericality: { other_than: 1 }
+    validates :postal_code, format: { with: /\A\d{3}-\d{4}\z/ ,message: 'はハイフンを入れて入力してください'}
+    validates :area_id, numericality: { other_than: 1,message: 'を選択してください' }
     validates :municipality
     validates :house_number
-    validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/ }
+    validates :phone_number, format: { with: /\A\d{10}$|^\d{11}\z/,message: 'は10桁または11桁でハイフンなしで入力してください'}
     validates :token
   end
 
